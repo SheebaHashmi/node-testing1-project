@@ -8,6 +8,11 @@
  */
 function trimProperties(obj) {
   // ✨ implement
+ return Object.keys(obj).reduce((acc,curr)=>{
+   acc[curr] = obj[curr].trim()
+   return acc;
+ },{})
+  
 }
 
 /**
@@ -20,6 +25,7 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+
 }
 
 /**
@@ -32,7 +38,22 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
-}
+  // let arr = []
+  // let result = 0
+  // integers.forEach(integer => {
+  //   Object.keys(integer).reduce((previous,curr) => {
+  //    console.log('prev',previous)
+  //    console.log('curr',curr)
+  //   })
+  // })
+  // for(let i = 0; i < arr.length; i++){
+  //   if(arr[i] > arr[i+1]){
+  //     result = arr[i]
+  //   }
+  // }
+  // console.log(result)
+  // return result
+} 
 
 class Counter {
   /**
@@ -66,6 +87,8 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.seasons = ['summer','fall','winter','spring']
+    this.count= 0
   }
 
   /**
@@ -82,6 +105,13 @@ class Seasons {
    */
   next() {
     // ✨ implement
+   const result = this.seasons[this.count]
+   if(this.count === 3){
+     this.count = 0
+   }else{
+     this.count++
+   }
+   return result
   }
 }
 
