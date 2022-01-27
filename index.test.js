@@ -16,12 +16,16 @@ describe('[Exercise 1] trimProperties', () => {
 })
 
 describe('[Exercise 2] trimPropertiesMutation', () => {
-  // test('[3] returns an object with the properties trimmed', () => {
-  //   const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
-  //   const result = utils.trimPropertiesMutation(input)
-  //   expect(input).toEqual(result)
-  // })
-  // test('[4] the object returned is the exact same one we passed in', () => {})
+  test('[3] returns an object with the properties trimmed', () => {
+    const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
+    const result = utils.trimPropertiesMutation(input)
+    expect(input).toEqual(result)
+  })
+  test('[4] the object returned is the exact same one we passed in', () => {
+    const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
+    const result = utils.trimPropertiesMutation(input)
+    expect(input).toEqual(result)
+  })
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
@@ -92,22 +96,40 @@ describe('[Exercise 5] Seasons', () => {
   })
 })
 
-// describe('[Exercise 6] Car', () => {
-//   let focus
-//   beforeEach(() => {
-//     focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
-//   })
-//   // test('[15] driving the car returns the updated odometer', () => {
-//   //   focus.drive(100)
-//   //   expect(focus.odometer).toBe(100)
-//   // })
-//   // test('[16] driving the car uses gas', () => {
-//   //   focus.drive(100)
-//   //   expect(focus.tank).toBe()
-//   // })
-//   // test('[17] refueling allows to keep driving', () => {})
-//   // test('[18] adding fuel to a full tank has no effect', () => {})
-// })
+describe('[Exercise 6] Car', () => {
+  let focus
+  beforeEach(() => {
+    focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
+  })
+  test('[15] driving the car returns the updated odometer', () => {
+    expect(focus.drive(100)).toBe(100)
+    expect(focus.drive(100)).toBe(200)
+    expect(focus.drive(100)).toBe(300)
+    expect(focus.drive(100)).toBe(400)
+  })
+  test('[16] driving the car uses gas', () => {
+    focus.drive(600)
+    expect(focus.drive(1)).toBe(600)
+    expect(focus.drive(1)).toBe(600)
+    expect(focus.tank).toBe(0)
+  })
+  test('[17] refueling allows to keep driving', () => {
+    focus.drive(600)
+    focus.refuel(10)
+    focus.drive(600)
+    expect(focus.odometer).toBe(900)
+    focus.drive(600)
+    focus.refuel(20)
+    focus.drive(600)
+    expect(focus.odometer).toBe(1500)
+  })
+  test('[18] adding fuel to a full tank has no effect', () => {
+    focus.refuel(10)
+    focus.drive(600)
+    expect(focus.odometer).toBe(600)
+    // expect(focus.tank).toEqual(focus.tank)
+  })
+})
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
   test('[19] resolves true if passed an even number',async () => {
